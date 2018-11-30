@@ -146,7 +146,7 @@ for classid in class_doc_id:
 
 # Feature Extraction
 
-# Chi-Square
+# Χ2 test
 
 
 # matrix = np.zeros((13, len(dictionary)))  #把每個term在每個class裏的特徵值算出來
