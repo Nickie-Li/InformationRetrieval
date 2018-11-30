@@ -1,9 +1,6 @@
 
 # coding: utf-8
 
-# In[ ]:
-
-
 #用以定義dictionary的資料結構
 from collections import defaultdict 
 
@@ -25,9 +22,6 @@ import sys
 import math
 
 
-# In[ ]:
-
-
 def TF(string):
     tf = defaultdict(int) #建立Dictionary的資料結構，以term作爲key，頻率做value，e.g. 'word' : 3
     #hw1的方式產出term
@@ -45,9 +39,6 @@ def TF(string):
     return tf
 
 
-# In[ ]:
-
-
 def term(word):
     res = nltk.word_tokenize(word)
     porter = PorterStemmer()  #定義方法
@@ -61,9 +52,6 @@ def term(word):
     return final
 
 
-# In[ ]:
-
-
 path = 'IRTM/IRTM'  #文件集的 path
 N = len(glob.glob1(path,"*.txt")) #計算文件個數 N
 DF = defaultdict(int) #儲存每個term出現在幾篇文章的 dictionary
@@ -75,9 +63,6 @@ for filename in glob.glob(os.path.join(path, '*.txt')): #分別讀取每個文�
     for w in set(final): #判斷 term是否是字母組成，是的話 Document Frequency +1
         if w.isalpha():
             DF[w] += 1
-
-
-# In[ ]:
 
 
 sort_dict = {}  #存放排序後的 dictionary
@@ -100,9 +85,6 @@ for s in sort_dict:
     count += 1
 
 
-# In[ ]:
-
-
 f = open('dictionary.txt', 'w') #建立新檔案，名爲dictionary.txt
 f.write('t_index'+ " "*(10 - len('t_index')) + 'term'.ljust(15," ") + 'df'.rjust(10," ") + '\n') 
 #寫入list的每個項目，並定義每個column的内容
@@ -114,15 +96,9 @@ for element in sort_dict:
 f.close() #寫完，關閉檔案儲存
 
 
-# In[ ]:
-
-
 IDF = dict()
 for word in sort_dict:
     IDF[word] = math.log((N / sort_dict[word]), 10) #logarithm base 10
-
-
-# In[ ]:
 
 
 import operator
@@ -133,9 +109,6 @@ def sortdict(x):
     sort = sorted(new.items(), key=operator.itemgetter(1))  #根據dictionary的value來排序
     sort = dict(sort)
     return sort
-
-
-# In[ ]:
 
 
 path = 'IRTM/IRTM'
@@ -173,9 +146,6 @@ for filename in glob.glob(os.path.join(path, '*.txt')):
     for element in sort:
         f.write(str(sort[element]).ljust(15," ") + str(tfidf[element]).rjust(10," ") + '\n') #寫入list的每個項目，並換行
     f.close() #寫完，關閉檔案儲存
-
-
-# In[ ]:
 
 
 def cosine(d1, d2):  #傳入數值，為document id，這次作業以 1，2為計算對象
@@ -218,9 +188,6 @@ def cosine(d1, d2):  #傳入數值，為document id，這次作業以 1，2為�
             y[s] = 0
         summ = summ + float(x[s])*float(y[s])  #unit vector内積，極爲 2 documents的相似度
     return summ
-
-
-# In[ ]:
 
 
 sim = cosine(1, 2)

@@ -1,17 +1,12 @@
 
 # coding: utf-8
 
-# In[1]:
-
 
 from bs4 import BeautifulSoup
 import requests 
 from lxml import html
 from bs4 import BeautifulSoup
 headers = {'User-Agent' :'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36'}
-
-
-# In[2]:
 
 
 url = 'https://ceiba.ntu.edu.tw/course/35d27d/content/28.txt'
@@ -22,9 +17,6 @@ for s in c_result:
     string1 = s.text
 print("Text:")
 print(string1)
-
-
-# In[3]:
 
 
 import nltk
@@ -43,8 +35,6 @@ print("Tokenized Result:")
 print(result)
 
 
-# In[4]:
-
 
 new = list()  #用以存取lower case的結果
 for r in result:
@@ -55,8 +45,6 @@ print('Lowercase:')
 print(new)
 
 
-# In[5]:
-
 
 from nltk.stem.porter import PorterStemmer #import porter algorithm的套件
 porter = PorterStemmer()  #定義方法
@@ -65,8 +53,6 @@ stemmer = [ porter.stem(element) for element in new]  #stemming
 print('Stemming:')
 print(stemmer)
 
-
-# In[6]:
 
 
 from nltk.corpus import stopwords
@@ -79,8 +65,6 @@ for s in stemmer:
 print('Result：')
 print(final)
 
-
-# In[7]:
 
 
 f = open('result.txt', 'w') #建立新檔案，名爲result.txt
